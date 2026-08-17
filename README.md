@@ -1,9 +1,5 @@
-# 📧 Email Spam Prediction Engine
+#  Email Spam Prediction Engine
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3%2B-F7931E)
-![Deployment](https://img.shields.io/badge/Render-Live-brightgreen)
 
 An end-to-end Machine Learning web application designed to classify emails as **Spam** or **Not Spam (Ham)**. Built using an ensemble **Stacking Classifier**, integrated with a asynchronous **FastAPI** backend, and deployed on **Render**.
 
@@ -11,7 +7,7 @@ An end-to-end Machine Learning web application designed to classify emails as **
 
 ---
 
-## 📌 Overview
+##  Overview
 
 Spam and phishing emails pose significant cybersecurity risks. This project delivers a machine learning solution capable of processing raw, multiline email inputs, applying text cleaning and URL tokenization, and delivering real-time predictions with high precision to minimize false positives.
 
