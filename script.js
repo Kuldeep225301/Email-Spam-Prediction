@@ -1,7 +1,7 @@
 // ============================================================
 // Config
 // ============================================================
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "https://email-spam-prediction-1m3d.onrender.com/";
 const PREDICT_ENDPOINT = `${API_BASE_URL}/predict`;
 
 const SAMPLE_TEXT =

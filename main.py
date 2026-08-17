@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# File Paths Set Up
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, "models")
 VECTORIZER_PATH = os.path.join(MODEL_DIR, "vectorizer.pkl")
