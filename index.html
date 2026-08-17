@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Signal / Spam Scanner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="noise-overlay"></div>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__mark">◎</span>
+      <span class="topbar__name">SIGNAL</span>
+    </div>
+    <div class="topbar__status" id="apiStatus">
+      <span class="status-dot" data-state="checking"></span>
+      <span class="status-text">checking backend…</span>
+    </div>
+  </header>
+
+  <main class="stage">
+
+    <section class="intro">
+      <p class="intro__eyebrow">email triage / 001</p>
+      <h1 class="intro__title">Drop the message.<br>We'll read between the lines.</h1>
+      <p class="intro__sub">Paste the raw body of an email below. The classifier scores it against learned spam patterns and returns a verdict with a confidence read.</p>
+    </section>
+
+    <section class="console" aria-label="Spam scanner">
+
+      <div class="console__panel console__panel--input">
+        <div class="panel-label">
+          <span class="panel-label__index">IN</span>
+          <span class="panel-label__text">Message body</span>
+        </div>
+
+        <textarea
+          id="emailText"
+          class="email-field"
+          placeholder="Congratulations! You've been selected to claim your $1,000 prize. Click here to verify your account before it expires..."
+          spellcheck="false"
+        ></textarea>
+
+        <div class="field-footer">
+          <span id="charCount" class="char-count">0 characters</span>
+          <div class="field-actions">
+            <button type="button" id="sampleBtn" class="btn btn--ghost">Load sample</button>
+            <button type="button" id="clearBtn" class="btn btn--ghost">Clear</button>
+          </div>
+        </div>
+
+        <button type="button" id="scanBtn" class="btn btn--primary scan-btn">
+          <span class="scan-btn__label">Run scan</span>
+          <span class="scan-btn__spinner" hidden></span>
+        </button>
+
+        <p id="errorMsg" class="error-msg" role="alert" hidden></p>
+      </div>
+
+      <div class="console__panel console__panel--output">
+        <div class="panel-label">
+          <span class="panel-label__index">OUT</span>
+          <span class="panel-label__text">Verdict</span>
+        </div>
+
+        <div id="resultEmpty" class="result-empty">
+          <div class="result-empty__glyph">✎</div>
+          <p>Run a scan to see the verdict, confidence meter, and the exact text the model evaluated.</p>
+        </div>
+
+        <div id="resultCard" class="result-card" hidden>
+
+          <div class="result-card__verdict">
+            <span id="verdictBadge" class="verdict-badge">Not Spam</span>
+            <span id="verdictSub" class="verdict-sub">Looks safe to deliver</span>
+          </div>
+
+          <div class="meter" aria-hidden="true">
+            <div class="meter__track">
+              <div id="meterFill" class="meter__fill"></div>
+              <div id="meterNeedle" class="meter__needle"></div>
+            </div>
+            <div class="meter__scale">
+              <span>0%</span>
+              <span>50%</span>
+              <span>100%</span>
+            </div>
+          </div>
+
+          <div class="meter__reading">
+            <span class="meter__reading-label">Spam probability</span>
+            <span id="probValue" class="meter__reading-value">0%</span>
+          </div>
+
+          <div class="processed-block">
+            <div class="processed-block__label">Text evaluated by model</div>
+            <p id="processedText" class="processed-block__text"></p>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="foot">
+      <span>POST /predict · <code id="endpointLabel">http://127.0.0.1:8000</code></span>
+    </footer>
+
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
