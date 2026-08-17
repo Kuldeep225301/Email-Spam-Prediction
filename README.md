@@ -17,7 +17,7 @@ Spam and phishing emails pose significant cybersecurity risks. This project deli
 
 To achieve maximum reliability, **11 different algorithms** were evaluated. The top-performing estimators were combined into a **Stacking Classifier** to maximize **Precision** (ensuring legitimate emails are not wrongly marked as spam).
 
-### 🏆 Final Model Metrics
+###  Final Model Metrics
 * **Winning Model:** `StackingClassifier`
 * **Overall Accuracy:** **98.55%**
 * **Precision Score:** **99.24%**
